@@ -1,10 +1,12 @@
 package app.revanced.patches.youtube.layout.buttons.autoplay.fingerprints
 
+import app.revanced.patcher.extensions.or
 import app.revanced.patcher.fingerprint.method.impl.MethodFingerprint
+import org.jf.dexlib2.AccessFlags
 
 object LayoutConstructorFingerprint : MethodFingerprint(
-    strings = listOf("1.0x"),
-    customFingerprint = { methodDef, _ ->
-        methodDef.definingClass.endsWith("YouTubeControlsOverlay;")
-    }
+    returnType = "V",
+    accessFlags = AccessFlags.PUBLIC or AccessFlags.FINAL,
+    parameters = emptyList(),
+    strings = listOf("1.0x")
 )
